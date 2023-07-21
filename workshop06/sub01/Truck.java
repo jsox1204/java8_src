@@ -10,24 +10,23 @@ public class Truck extends Car{
 		super(maxWeight, oilTankSize, efficiency);
 	}
 	
+	@Override
 	public double getEfficiency() {
-		double efficiency = super.getEfficiency();
-		int curWeight = getCurWeight();
-		efficiency -= (curWeight / 5) * 0.2;
-		return efficiency;
+		// 현재 적재 중량 5kg 당 연비 0.2km를 감소시킨 값 리턴
+		return super.getEfficiency() - ((getCurWeight() / 5) * 0.2);
 	}
 	
+	@Override
 	public void moving(int distance) {
 		double restOil = getRestOil();
 		
 		restOil -= calcOil(distance);
 		
-		super.setRestOil(restOil);
+		setRestOil(restOil);
 	}
 	
-	public double calcOil(int distance) {
-		double efficiency = getEfficiency();
-		return distance / efficiency;
+	private double calcOil(int distance) {
+		return distance /getEfficiency();
 	}
 	
 	public int getCost(int distance) {
@@ -36,6 +35,6 @@ public class Truck extends Car{
 	
 	@Override
 	public String toString() {
-		return String.format("%s \t %f", super.toString(), getEfficiency());
+		return String.format("%s\t\t%.1f", super.toString(), getEfficiency());
 	}
 }

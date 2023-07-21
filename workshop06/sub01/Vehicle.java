@@ -17,7 +17,7 @@ public class Vehicle {
 	}
 	
 	public String toString() {
-		return String.format("%d \t %f", maxWeight, oilTankSize);
+		return String.format("%d\t\t%.1f", maxWeight, oilTankSize);
 	}
 
 	public int getMaxWeight() {

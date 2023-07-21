@@ -14,31 +14,26 @@ public class Car extends Vehicle{
 	}
 	
 	public void addOil(int oil) {
-		restOil += oil;
-		double OilTankSize = getOilTankSize();
-		
-		if(restOil > OilTankSize) {
-			restOil = OilTankSize;
+		// 오일 탱크 크기를 넘지 않을 때만 오일 추가
+		if((restOil + oil) <= getOilTankSize()) {
+			restOil += oil;
 		}
 	}
 	
 	public void moving(int distance) {
-		double efficiency = getEfficiency();
-		restOil -= distance * efficiency;
+		restOil -= (distance / getEfficiency());
 	}
 	
 	public void addWeight(int weight) {
-		curWeight += weight;
-		double maxWeight = getMaxWeight();
-		
-		if(curWeight > maxWeight) {
-			curWeight = (int) maxWeight;
+		// 최대적재중량을 넘지 않을 때만 중량 추가
+		if((curWeight + weight) <= getMaxWeight()) {
+			curWeight += weight;
 		}
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("%s \t %f \t %d", super.toString(), restOil, curWeight);
+		return String.format("%s\t\t%.1f\t %d", super.toString(), restOil, curWeight);
 	}
 
 	public double getRestOil() {
