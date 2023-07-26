@@ -12,12 +12,12 @@ public class Rectangle extends Shape implements Resize{
 
 	@Override
 	public void setResize(int size) {
-		super.setWidth(super.getWidth() + size);
+		super.setWidth(getWidth() + size);
 	}
 
 	@Override
 	public double getArea() {
-		return super.getWidth() * super.getHeight();
+		return getWidth() * getHeight();
 	}
 
 	

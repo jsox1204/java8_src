@@ -12,12 +12,12 @@ public class Triangle extends Shape implements Resize{
 
 	@Override
 	public void setResize(int size) {
-		super.setHeight(super.getHeight() + size);
+		super.setHeight(getHeight() + size);
 	}
 
 	@Override
 	public double getArea() {
-		return (super.getWidth()) * super.getHeight() * 0.5;
+		return getWidth() * getHeight() * 0.5;
 	}
 
 	
